@@ -1,0 +1,218 @@
+/* Base Styles */
+html, body { 
+    scroll-behavior: smooth; 
+    overflow-x: hidden; /* Mencegah geser horizontal pada layar kecil */
+    width: 100%;
+}
+
+/* Menyesuaikan jarak body dengan tinggi navbar */
+body {
+    padding-top: 56px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Responsive Typography */
+
+/* Ukuran teks responsif untuk berbagai perangkat */
+.hero-title { 
+    font-size: clamp(1.8rem, 6vw, 4.5rem); /* Ukuran teks fleksibel */
+    word-break: break-word; /* Memecah kata yang terlalu panjang */
+    overflow-wrap: break-word;
+}
+
+.hero-desc { 
+    font-size: clamp(0.9rem, 2.5vw, 1.25rem);
+}
+
+/* Header Halaman */
+
+/* Header untuk halaman selain Home */
+.page-header {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/img/logo.jpeg') center/cover;
+    height: 30vh;
+    min-height: 200px;
+}
+
+/* Hero Section */
+
+/* Tampilan utama halaman */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.7)), url('/img/home/1.jpeg') center/cover;
+    height: 60vh;
+    min-height: 400px;
+}
+
+/* Animasi */
+
+/* Efek muncul dari bawah */
+.hero-title, .hero-desc, .hero-btn {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeUp 1s ease forwards;
+}
+
+.hero-title { animation-delay: 0.3s; }
+.hero-desc { animation-delay: 0.6s; }
+.hero-btn { animation-delay: 0.9s; }
+
+@keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Hover Effects */
+
+/* Efek hover tombol */
+.hero-btn, .btn-submit {
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-btn:hover,
+.btn-submit:hover {
+    background-color: #b02a37;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.5);
+}
+
+/* Efek hover kartu layanan */
+.service-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* Galeri */
+
+/* Efek gambar galeri */
+.portfolio-img {
+    width: 100%;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: grayscale(20%);
+}
+
+.portfolio-img:hover {
+    transform: scale(1.02);
+    filter: grayscale(0%);
+}
+
+/* Ukuran gambar utama galeri */
+.gallery-img-main {
+    height: 400px;
+    object-fit: cover;
+    object-position: center top;
+}
+
+/* Ukuran gambar pendukung galeri */
+.gallery-img-sub {
+    height: 250px;
+    object-fit: cover;
+    object-position: center top;
+}
+
+/* Footer */
+
+/* Efek link footer */
+.footer-link {
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #dc3545 !important;
+    text-decoration: underline !important;
+}
+
+/* Efek ikon media sosial */
+.social-icon {
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+.social-icon:hover {
+    color: #dc3545 !important;
+    transform: translateY(-3px);
+}
+
+/* Scroll To Top */
+
+/* Tombol kembali ke atas */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Tombol aktif saat halaman di-scroll */
+#scrollTopBtn.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Efek hover tombol */
+#scrollTopBtn:hover {
+    background-color: #b02a37;
+    transform: scale(1.1);
+}
+
+/* Media Queries */
+
+/* Tampilan tablet */
+@media (max-width: 991px) {
+    .gallery-img-main { height: 350px; }
+    .gallery-img-sub { height: 200px; }
+}
+
+/* Tampilan mobile */
+@media (max-width: 767px) {
+    body {
+        padding-top: 60px;
+    }
+
+    .hero {
+        height: auto;
+        min-height: 50vh;
+        padding: 5rem 1rem; /* Menambah ruang pada layar kecil */
+    }
+
+    .py-5 {
+        padding-top: 2.5rem !important;
+        padding-bottom: 2.5rem !important;
+    }
+
+    .gallery-img-main,
+    .gallery-img-sub {
+        height: 250px;
+    }
+
+    /* Menyesuaikan ukuran tombol */
+    #scrollTopBtn {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    /* Menyesuaikan ukuran logo/navbar */
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+}
